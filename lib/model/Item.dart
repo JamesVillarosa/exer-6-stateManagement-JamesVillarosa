@@ -1,4 +1,4 @@
-class Item {
+class Item {                                      // Define a class representing an item
   String name;
   double price;
   int quantity;

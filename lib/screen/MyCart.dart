@@ -23,17 +23,17 @@ class MyCart extends StatelessWidget {
               children: [
                 Expanded(
                   child: prov.cart.isEmpty 
-                  ? const Text("No Products Yet")
+                  ? const Text("No Products Yet")                           // Display message if cart is empty
                   : ListView.builder(
                     itemCount: prov.cart.length,
                     itemBuilder: (context, index) {
                       return ListTile(
                         leading: const Icon(Icons.food_bank),
-                        title: Text(prov.cart[index].name),
+                        title: Text(prov.cart[index].name),               // Name of the item
                         trailing: IconButton(
                           icon: const Icon(Icons.delete),
                           onPressed: () {
-                            context.read<ShoppingCart>().removeItem(prov.cart[index]);
+                            context.read<ShoppingCart>().removeItem(prov.cart[index]);      // Remove item from cart
                           }
                         ),
                       );
@@ -41,7 +41,7 @@ class MyCart extends StatelessWidget {
                   )
                 ),
                 Text(
-                  "Total: ${prov.getTotal()}",
+                  "Total: ${prov.getTotal()}",                                            // Display total cost of items in cart
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 SizedBox(
@@ -53,10 +53,10 @@ class MyCart extends StatelessWidget {
                     Expanded(
                       child: ElevatedButton(
                         onPressed: () {
-                          prov.removeAll();
+                          prov.removeAll();                                               // Remove all items from cart
                         },
                         style: ElevatedButton.styleFrom(
-                          padding: EdgeInsets.symmetric(vertical: 8),
+                          padding: EdgeInsets.symmetric(vertical: 8),                     // Reset button design
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8),
                           ),
@@ -69,12 +69,12 @@ class MyCart extends StatelessWidget {
                     Expanded(
                       child: ElevatedButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, "/checkout");
+                          Navigator.pushNamed(context, "/checkout");                              // Navigate to checkout screen
                         },
                         style: ElevatedButton.styleFrom(
                           padding: EdgeInsets.symmetric(vertical: 8),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: BorderRadius.circular(8),                                 // Checkout button design
                           ),
                           foregroundColor: Colors.white, backgroundColor: Colors.lightBlue,
                         ),
@@ -89,7 +89,7 @@ class MyCart extends StatelessWidget {
                 TextButton(
                   child: const Text("Go back to Product Catalog"),
                   onPressed: () {
-                    Navigator.pushNamed(context, "/products");
+                    Navigator.pushNamed(context, "/products");                    // Navigate back to product catalog
                   },
                 ),
               ],

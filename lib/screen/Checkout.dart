@@ -29,44 +29,44 @@ class Checkout extends StatelessWidget {
                   ),
                 ),
                 prov.cart.isEmpty
-                      ? const Text("No items to checkout!")
+                      ? const Text("No items to checkout!")           // Display message if cart is empty
                       : ListView.builder(
-                          shrinkWrap: true,
+                          shrinkWrap: true,                           // Allow ListView to occupy only the space it needs
                           itemCount: prov.cart.length,
                           itemBuilder: (context, index) {
                             return ListTile(
                               leading: const Icon(Icons.star),
-                              title: Text(prov.cart[index].name),
+                              title: Text(prov.cart[index].name),                 // Name of the item
                               trailing: Text(
-                                "\$${prov.cart[index].price.toStringAsFixed(2)}",
+                                "\$${prov.cart[index].price.toStringAsFixed(2)}", // Price of the item
                               ),
                             );
                           },
                         ),
                 SizedBox(height: 10),
                 Text(
-                  "Total Cost to Pay: \$${prov.getTotal().toStringAsFixed(2)}",
+                  "Total Cost to Pay: \$${prov.getTotal().toStringAsFixed(2)}",   // Display total cost to pay
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 SizedBox(height: 10),
-                if (prov.cart.isNotEmpty)
+                if (prov.cart.isNotEmpty)                                         // Show Pay Now button only if cart is not empty
                   ElevatedButton(
                     onPressed: () {
-                      prov.removeAll();
-                      Navigator.pushNamed(context, "/");
+                      prov.removeAll();                                           // Remove all items from cart
+                      Navigator.pushNamed(context, "/");                          // Navigate back to catalog screen
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
-                          content: Text("Payment Successful!"),
+                          content: Text("Payment Successful!"),                   // Show payment success message
                         ),
                       );
                     },
                     style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.symmetric(vertical: 15),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(8),                  // Pay now button design
                       ),
                       foregroundColor: Colors.white,
                       backgroundColor: Colors.lightBlue,
